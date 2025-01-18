@@ -1,6 +1,6 @@
 ---
 title: 分布式系统中的网络
-category: DistributedSystem
+category: DistSystem
 tags:
   - systemDesign
   - network
@@ -51,25 +51,22 @@ When you enter a URL in your browser, the browser sends a DNS query to find the 
 
 # HTTP & HTTPS
 
-## 1. HTTP
-
 HTTP (Hyper-Text Transfer Protocol): is an stateless application-layer protocol used for transmitting hyper-test such as web pages and transmits data in plaint text.
 
 > HTTP是用于传输超文本（如网页）的应用层协议，采用明文传输数据。
 
-### Reliable Transmission
+## HTTP Version
 
-#TODO
+HTTP 1.0 -> HTTP 1.1 -> HTTP 2.0 -> HTTP 3.0
 
+## HTTP Methods
 
-### HTTP Methods
+- Get: used for fetching data.
+- Post: used for creating data on a server.
+- Put/Patch: used for updating a record. 
+- Delete: used for removing a record from database.
 
-Get: used for fetching data.
-Post: used for creating data on a server.
-Put/Patch: used for updating a record. 
-Delete: used for removing a record from database.
-
-### Status Code
+## HTTP Status Code
 2xx Success Code: indicate that the request was successfully received and processed.
 > 2xx表明请求已被成功接收并处理
 - 200 OK: The standard response for successful requests.
@@ -95,6 +92,10 @@ Delete: used for removing a record from database.
 - 500 Internal Server Error.
 - 501 Not Implemented: The server does not support the functionality required to fulfill the request.
 - 503 Service Unavailable: The server is not ready to handle the request, often used the maintenance or overloaded servers.
+
+## Reliable Transmission
+
+#TODO
 
 ## 2. HTTPS
 

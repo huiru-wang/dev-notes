@@ -7,7 +7,12 @@ publishedAt: 2022-07-01
 description: 为什么需要缓存，在哪里可以设置缓存？
 ---
 
+
 # Why Cache
+
+A cache is a high-speed data storage layer that storage a subset of data. Caching allows you to efficently reuse previously retrieved or computed data.
+
+> 缓存是一种高速数据存储层，用于存储数据子集。缓存可让您高效地重复使用之前检索或计算的数据。
 
 <font color="#de7802">目的</font>：尽可能缩短网络请求的链路；降低响应时延；减轻服务压力；
 
@@ -32,6 +37,18 @@ Disadvantage:
 1. An application or a functionality needs to frequently read the same data, besides the data is rarely updated.
 2. Application scenarios that require low latency and fast response.
 
+## Where Can Caching Be Used
+  
+![](/images/cache-cachesystem.png)
+
+1. App/Browser: HTTP response can be cached by the browser. App can cache some static resources
+2. CDN: caches static web resources. The clients can retrieve data from a CDN node nearby.
+3. Load Balancer: can cache some static resources.
+4. Services:
+5. Distributed Cache
+6. Full-Text Search:
+7. Database
+8. Message Queue:
 # How to use Cache
 ##  1. Browser Cache
 

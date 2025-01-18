@@ -1,13 +1,12 @@
 ---
 title: 分布式系统设计基础
-category: DistributedSystem
+categorystem: DistSystem
 tags:
   - cap
   - systemDesign
 publishedAt: 2023-03-12
 description: 介绍CAP理论和分布式系统关键系统衡量指标
 ---
-
 
 # 1. CAP
 

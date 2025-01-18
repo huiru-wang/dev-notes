@@ -7,7 +7,7 @@ tags:
 publishedAt: 2023-07-11
 description: MySQL的InnoDB是如何工作的，B+Tree索引的结构、索引的分类以及什么是覆盖索引、回表、索引下推
 ---
-
+B+树索引结构：
 ![](/images/database-MySQL-b+tree.png)
 # 为什么使用B+Tree索引
 
