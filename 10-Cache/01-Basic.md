@@ -4,9 +4,8 @@ category: Cache
 tags:
   - cache
 publishedAt: 2022-07-01
-description: 为什么需要缓存，在哪里可以设置缓存？
+description: 为什么需要缓存？何时应该使用缓存？在一个完整的服务中哪些地方可以用到缓存？
 ---
-
 
 # Why Cache
 

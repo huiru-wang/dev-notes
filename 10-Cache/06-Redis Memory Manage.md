@@ -1,3 +1,12 @@
+---
+title: 如何处理DB缓存一致性
+category: Cache
+tags:
+  - cache
+  - Redis
+publishedAt: 2022-10-08
+description: Redis的内存是如何管理的？高效的内存管理是保证内存不会溢出，服务长时间稳定运行、保持高性能的保证。
+---
 
 # Redis内存管理方式
 

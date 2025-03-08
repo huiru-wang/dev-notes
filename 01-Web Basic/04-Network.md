@@ -1,8 +1,7 @@
 ---
 title: 分布式系统中的网络
-category: DistSystem
+category: WebBasic
 tags:
-  - systemDesign
   - network
 publishedAt: 2023-07-15
 description: 介绍IP、TCP、UDP、HTTP(S)、RPC、WebSocket等

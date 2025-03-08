@@ -1,5 +1,5 @@
 ---
-title: BTC Network
+title: BTC 网络
 category: web3
 tags: [btc]
 publishedAt: 2023-11-02

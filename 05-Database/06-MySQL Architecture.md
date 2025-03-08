@@ -1,10 +1,10 @@
 ---
-title: MySQL Architecture
+title: MySQL的架构关键组件及执行过程
 category: databse
 tags:
   - databse
   - MySQL
-publishedAt: 2023-02-07
+publishedAt: 2022-12-07
 description: 介绍MySQL的架构，每一个关键组件的作用及工作方式简单介绍
 ---
 

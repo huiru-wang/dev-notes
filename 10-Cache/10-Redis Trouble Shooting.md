@@ -1,5 +1,13 @@
+---
+title: 如何处理DB缓存一致性
+category: Cache
+tags:
+  - cache
+  - Redis
+publishedAt: 2023-05-02
+description: 大key和热key是分布式内存型缓存组件中比较常见的问题，对于Redis来说，如何监控、管理、紧急处理大key、热key问题很重要。
+---
 
-参考：https://zhuanlan.zhihu.com/p/581897185
 # 大key问题
 
 大key的大小视实际业务体量、Redis资源大小而定，可以是：
@@ -44,6 +52,7 @@
 2、根据业务特点，分批删除不需要的部分数据，如：
 - zset中删除比重小于阈值的数据；
 - hash数据中删除指定的较大的field；
+
 
 
 #  热key问题

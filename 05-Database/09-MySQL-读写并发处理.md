@@ -4,7 +4,7 @@ category: databse
 tags:
   - databse
   - MySQL
-publishedAt: 2022-09-13
+publishedAt: 2023-01-13
 description: InnoDB如何控制读写并发，如何执行锁以及什么是MVCC
 ---
 

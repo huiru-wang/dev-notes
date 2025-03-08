@@ -1,3 +1,13 @@
+---
+title: 如何处理DB缓存一致性
+category: Cache
+tags:
+  - cache
+  - Redis
+publishedAt: 2022-09-20
+description: Redis因为其In-memory、数据结构、单线程、高效的IO模型，拥有非常好的性能。
+---
+
 # Why is Redis so fast
 
 ## 1. In-memory Storage

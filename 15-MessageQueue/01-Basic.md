@@ -1,28 +1,35 @@
+---
+title: 分布式消息队列的特性和带来的问题
+category: Cache
+tags:
+  - cache
+publishedAt: 2022-11-12
+description: 分布式消息队列的关键组件、在分布式系统中的关键作用及可能带来的额外问题
+---
 
 https://www.geeksforgeeks.org/message-queues-system-design/
-# What is MessageQueue
+# 消息队列
 
 A message queue is a form of Asynchronous communication and data transfer mechanism. For messages sent between various systems inside a broader software architecture, it serves as a temporary storage and routing system.
 
 > 消息队列是一种异步通信和数据传输机制
 > 在广泛的软件架构中的系统间发送消息，充当临时存储和路由系统
 
-## Key Components
+## 关键组件
 
 ![](/images/MessageQueue-mq.png)
 
-1. Producer: any program that produces data for sharing and send to the message queue can be considered producers.
-2. MessageQueue: the messages stored and managed by a data structure util the consumers consume them. It serves as buffer between producers and consumers.
-3. Consumer: consume and processed the messages from the message queue.
-4. Message: a message can be defined as a unit of data that is transferred between producers and consumers.
+1. 生产者Producer: any program that produces data for sharing and send to the message queue can be considered producers.
+2. 消息队列MessageQueue: the messages stored and managed by a data structure util the consumers consume them. It serves as buffer between producers and consumers.
+3. 消费者Consumer: consume and processed the messages from the message queue.
+4. 消息Message: a message can be defined as a unit of data that is transferred between producers and consumers.
 
-> 关键的组件就是：生产者、队列、消费者、消息；
-# Benefits
+# 消息队列的特性
 
 In a distributed system, message queue is one of the most important component.
-## 1. Asynchronous Communication
+## 1. 异步通讯
 1. Asynchronous Communication: In scenarios where the core workflow does not need to wait synchronously for non-core operations, the non-core operations can be made asynchronous which can improves the response speed of the core workflow.
-## 2. Data Peak Shaving
+## 2. 流量削峰
 
 When a system is unable to handle massive requests or when it is not necessary to process all incoming traffic immediately, message queue can act as a buffer.
 
@@ -32,24 +39,24 @@ For example, if the system can handle 2000 requests per second, but during the p
 
 > 一个系统能够每秒处理2000请求，但是在流量高峰每秒有5000个请求，系统就可以将3000请求存储在MQ中，以防止宕机，在MQ中的请求可以被服务器以恒定的速率消费
 
-## 3. Data Reuse
+## 3. 数据冗余 
 
 When a piece of data needs to be consumed by multiple services, the message queue can distribute the message to different services. At the same time, that ensures data consistency across different parts of the system, because all modules receive the same data from the message queue.
 
 > 当一份数据需要被多个服务消费时，消息队列可以将消息分发到不同的服务，同时也确保了数据一致性，因为所有的系统内模块都从MQ中消费相同的数据
 
-## 4. Decoupling
+## 4. 系统解耦
 
 Message queues decouple applications from each other, allowing them to be developed independently. This makes systems more flexible, scalable and easier to maintain.
 
 >MQ可以解耦系统，允许它们独立开发，这样做让系统更弹性、更具扩展性、更好维护
 
-## 5. Parallel Processing
+## 5. 并发处理 
 
 A large task can be split into many smaller tasks, and each task can be sent as a message to the MQ, so that the tasks can be processed in parallel.
 
 > 一个大任务可以被分割成多个小任务，每个任务都可以当成消息投递到MQ，这样可以让这些任务并发处理
-## 6. Reliability
+## 6. 提升系统可靠性
 
 - Message-Persistence
 Message queue middleware typically offer message-persistence features. When a message is sent to the MQ, it is stored in a reliable storage. This ensures that even if the MQ server restarts, the messages are not lost.
@@ -68,21 +75,27 @@ They can detect failures of producers, consumers. When a consumer fails, the MQ 
 > 大部分MQ服务可以以集群方式启动，消息可以备份在不同的Server节点中
 > 它们可以检测生产者、消费者的故障。当消费者发生故障时，MQ 可以停止向该特定消费者发送消息并将其路由到其他可用的消费者。
 
-# Potential Problems
+# 使用消息队列可能存在的问题
 
 We need to pay attention to some potentail problems when adding MQ middleware to a distributed system:
-## 1. Consumption Idempotency
-幂等问题
+## 1. 重复消费问题
 
-幂等问题：重复生产/重复消费
-生产端幂等：
-1. 使用唯一ID保证消息幂等；
-2. 业务自己保证发送幂等，每次发送消息都检查消息是否已经发送/或使用事务保证；
+排查解决思路：
 
-消费端：
-1. 结合DB的幂等性；使用覆盖代替计算；
-2. 业务上进行判重等操作来保证；
-## 2. Message Loss
+1. 生产端：判断生产端是否重复发送了，可以基于队列的offset判断：
+	1. 如果相同的消息offset相同，则认为是同一条消息，则生产端正常；
+	2. 如果相同的消息offset不同，则看消息的内容是否都相同，如果相同则是生产端产生了重复消息；
+2. 消费者的Rebalance导致：服务节点的重启、长FGC等等
+	1. 消费者的节点数发生变化（集群发布、节点重启、断连、FGC等）都可能触发Rebalance；
+	2. Rebalance过程中，可能存在少量的重复消费情况；
+3. 消费者处理的问题：
+	1. 消费者在处理完消息后，在commit消息之前，宕机了，就可能触发消息的重复消费；
+
+消息的重复消费问题，不能依赖生产者和消息队列，消息队列要想做到<font color="#f79646">恰好一次</font>的代价很高；
+
+因此消费者必须要做好业务上的消费幂等；
+
+## 2. 消息丟失
 
 要保证消息可靠传输，要从消息链路每个地方保证：
 1. 生产者发送消息到消息队列时丢失；
@@ -99,7 +112,7 @@ We need to pay attention to some potentail problems when adding MQ middleware to
 	- 当消费端，消费完成，应当响应MQ，去进行对应消息的消费Commit；
 
 
-## 3. Message Block
+## 3. 消息堆积
 
 没办法，要消费，就只能提高消费端的消费能力；
 1. 增加消费者线程、进程；

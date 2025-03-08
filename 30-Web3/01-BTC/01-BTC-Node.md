@@ -3,7 +3,7 @@ title: BTC Node
 category: web3
 tags: [btc]
 publishedAt: 2023-11-01
-description: what is BTC node and how does it works
+description: BTC的节点类型以及它们是如何工作的？
 ---
 
 # Node
@@ -24,6 +24,7 @@ A full node is a node that can keep up with the blockchain and validate the bloc
 
 > 存档节点保留区块链的完整副本。 它可以将整个区块链复制到加入网络的任何新节点。
 > 修剪后的节点会收到区块链的完整副本，但它会删除链上较旧的区块，以节省磁盘空间。
+
 ## Lightweight Node
 
 A lightweight node is a node that can keep up with the blockchain, but it cannot validate the blocks and transactions it receives.

@@ -1,3 +1,44 @@
+---
+title: 分布式缓存组件
+category: Cache
+tags:
+  - cache
+publishedAt: 2022-08-02
+description: 分布式缓存组件解决了什么问题？架构是什么样的？有什么痛点和问题？
+---
+
+# 单体架构
+
+早期的单节点服务，如在进程内的HashMap，仅服务于单机，无法跨进程共享数据，服务实例间的缓存冗余，扩展性差；
+
+方案：引入集中式缓存组件；独立部署缓存服务节点。
+
+单节点的分布式缓存（集中式缓存）：
+1. 有单点故障问题；
+2. 内存有限，扩容困难；
+
+
+# 主从复制和故障转移
+
+主从复制是解决<font color="#f79646">单点故障</font>而出现；传统数据库、Redis都需要从节点在主节点宕机时随时顶上。
+
+但是光有从节点只是做了数据的备份，如何检测主节点服务状态、如何进行故障转移？
+
+Redis的解决方案有2个：
+- Sentinel方案；
+- Redis Cluster方案；
+
+# 分片技术
+
+分片技术是Redis为了解决单节点内存容量有限的问题，通过扩展节点个数来实现数据分片，提高集群的承载能力；
+
+
+# 集群技术
+
+当前Redis的集群架构大致有2种：
+- Redis的开源集群方案；（客户端直连Redis节点，客户端进行命令路由、集群内借助Gossip协议、一主多备进行故障转移）
+- 代理模式方案；（客户端只和代理节点交互，由代理进行命令的路由、负载均衡、故障转移）
+
 
   
 Distributed caching is a technique used in a distributed system to store and manage data in a way that allows multiple nodes or servers in a distributed environment to access and share cached data.
@@ -16,76 +57,3 @@ Distributed caching is a technique used in a distributed system to store and man
 
 
 
-# Implementation of distributed locks
-
-1. Acquire the Lock
-Use the `SET` command in Redis to try to acquire the lock. The `key` represents the lock resource, and the `value` can be a unique identifier, and the expiration time of the lock should set based on an estimate of the maximum time it takes to excute the critical section.
-The `unique_value` is used to ensure that the client that acquired the lock is the one that releases it.
-
-> 使用 Redis 中的 `SET` 命令尝试获取锁。`key` 表示锁资源，`value` 可以是唯一标识符，锁的过期时间应根据执行临界区所需的最大时间估计来设置。
-> `unique_value` 用于确保获取锁的客户端就是释放锁的客户端
-
-
-2. Execute the Critical Section
-Once a client successfully acquires the lock, it can execute the critical section of code that requires exclusive access to a shared resource.
-
-> 一旦客户端成功获取锁，它就可以执行需要独占访问共享资源的代码的关键部分
-
-3. Release the Lock
-
-it's important to ensure atomicity to release the lock. A Lua script can be used in Redis to achieve this.
-
->保证释放锁的原子性很重要。可以在Redis中使用Lua脚本来实现这一点。
-
-```python
-import redis
-import uuid
-
-class RedisReentrantLock:
-
-    def __init__(self, redis_conn, lock_key):
-        self.redis_conn = redis_conn
-        self.lock_key = lock_key
-        self.client_id = str(uuid.uuid4())
-        self.lock_counter_key = f"lock_counter:{lock_key}"
-
-    def lock(self):
-        # Use a Lua script to implement atomic operations for checking and incrementing the counter
-        lua_script = """
-        if redis.call('exists', KEYS[1]) == 0 then
-            redis.call('hset', KEYS[2], ARGV[1], 1)
-            redis.call('expire', KEYS[2], ARGV[2])
-            return 1
-        elseif redis.call('hexists', KEYS[2], ARGV[1]) == 1 then
-            local count = tonumber(redis.call('hget', KEYS[2], ARGV[1]))
-            redis.call('hset', KEYS[2], ARGV[1], count + 1)
-            return 1
-        else
-            return 0
-        end
-        """
-
-        result = self.redis_conn.eval（lua_script, 2, self.lock_key, self.lock_counter_key, self.client_id, 30)
-        return result == 1
-
-    def unlock(self):
-        # Use a Lua script to implement atomic operations for decrementing the counter and deleting if needed
-        lua_script = """
-        if redis.call('hexists', KEYS[2], ARGV[1]) == 1 then
-            local count = tonumber(redis.call('hget', KEYS[2], ARGV[1]))
-            if count > 1 then
-                redis.call('hset', KEYS[2], ARGV[1], count - 1)
-                return 1
-            else
-                redis.call('hdel', KEYS[2], ARGV[1])
-                redis.call('del', KEYS[1])
-                return 1
-            end
-        else
-            return 0
-        end
-        """
-        result = self.redis_conn.eval（lua_script, 2, self.lock_key, self.lock_counter_key, self.client_id)
-        return result == 1
-
-```

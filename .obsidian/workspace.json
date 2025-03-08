@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "598ca7d8b50fb61c",
+        "id": "16d880f40bc57b96",
         "type": "tabs",
         "children": [
           {
-            "id": "815debcef7e9f7b3",
+            "id": "7f4c8718c9065231",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "99-Resume/未命名.md",
+                "file": "99-Project/05-HR-Saas人事档案模块重构.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "05-HR-Saas人事档案模块重构"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -93,17 +94,17 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "15-Leecode/How to Leetcode.md",
+                "file": "00-Trade/04-量价关系.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "How to Leetcode 的反向链接列表"
+              "title": "04-量价关系 的反向链接列表"
             }
           },
           {
@@ -112,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "15-Leecode/How to Leetcode.md",
+                "file": "00-Trade/04-量价关系.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "How to Leetcode 的出链列表"
+              "title": "04-量价关系 的出链列表"
             }
           },
           {
@@ -139,8 +140,8 @@
             "state": {
               "type": "calendar",
               "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           },
           {
@@ -149,18 +150,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "15-Leecode/How to Leetcode.md"
+                "file": "99-Project/05-HR-Saas人事档案模块重构.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "How to Leetcode 的大纲"
+              "title": "05-HR-Saas人事档案模块重构 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 331.5,
-    "collapsed": true
+    "width": 249.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -175,54 +179,54 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "815debcef7e9f7b3",
+  "active": "7f4c8718c9065231",
   "lastOpenFiles": [
-    "21-ProjectManage/02-Project Risk Control.md",
-    "99-Resume/未命名.md",
-    "99-Resume",
-    "25-工程设计/02-稳定性：灰度能力.md",
-    "25-工程设计/03-稳定性：强弱依赖与SLA.md",
-    "25-工程设计/04-稳定性：业务重构的正确性验证及流量平滑切换.md",
-    "20-SystemDesign/50-Short URL.md",
-    "20-SystemDesign/25-CI & CD.md",
-    "20-SystemDesign/21-Metric.md",
-    "20-SystemDesign/20-Observability.md",
-    "20-SystemDesign/08-LoadBalance.md",
-    "20-SystemDesign/06-RPC.md",
+    "99-Project/04-HR-Saas电子签平台.md",
+    "99-Project/01-BCP资金一致性服务.md",
+    "01-Web Basic/06-RPC.md",
+    "01-Web Basic/20-Observability.md",
+    "01-Web Basic/21-Metric.md",
+    "01-Web Basic/04-Network.md",
+    "01-Web Basic/00-How web application works.md",
+    "22-ProjectManage/02-Project Risk Control.md",
+    "21-CICD/阿里云部署.md",
+    "99-Project/05-HR-Saas人事档案模块重构.md",
+    "30-Web3/01-BTC/05-Fork And Attack.md",
+    "30-Web3/01-BTC/04-BTC-Transactions.md",
+    "30-Web3/01-BTC/03-BTC Block Data Structure.md",
+    "30-Web3/01-BTC/02-BTC-Network.md",
+    "30-Web3/01-BTC/01-BTC-Node.md",
+    "20-SystemDesign/30-秒杀系统设计.md",
     "20-SystemDesign/05-API Design.md",
-    "20-SystemDesign/04-Network.md",
+    "20-SystemDesign/08-LoadBalance.md",
+    "20-SystemDesign/01-Single & Distributed.md",
+    "20-SystemDesign/00-SystemDesign Q&A.md",
     "20-SystemDesign/03-指标计算.md",
     "20-SystemDesign/02-Distributed System Basics.md",
-    "20-SystemDesign/00-SystemDesign Q&A.md",
-    "20-SystemDesign/01-Single & Distributed.md",
-    "15-MessageQueue/04-RocketMQ.md",
-    "15-MessageQueue/03-RabbitMQ.md",
-    "15-MessageQueue/02-Kafka.md",
-    "15-MessageQueue/01-Basic.md",
-    "10-Cache/10-Redis Trouble Shooting.md",
-    "10-Cache/06-Redis Memory Manage.md",
-    "10-Cache/05-Redis.md",
-    "10-Cache/02-Distributed Cache.md",
-    "10-Cache/02-Cache-如何处理DB缓存一致性.md",
+    "10-Cache/01-Basic.md",
+    "05-Database/11-MySQL慢SQL.md",
+    "05-Database/10-MySQL-InnoDB事务.md",
+    "05-Database/09-MySQL-读写并发处理.md",
+    "images/hr-saas-roster-data-check.png",
+    "images/hr-saas-roster-architecture.png",
+    "images/hr-saas-esign-usecase-2.png",
+    "images/hr-saas-esign-usecase-1.png",
+    "images/hr-saas-esign-start.png",
+    "images/hr-saas-esign-domain.png",
+    "images/jvm-heap.png",
+    "images/heap.png",
+    "images/jvm-stack.png",
+    "images/stack.png",
+    "02-ProgramLanguage/01-JVM",
+    "02-ProgramLanguage/00-Java/未命名",
+    "02-ProgramLanguage/00-Java",
+    "00-Trade",
+    "21-CICD",
+    "99-Project",
     "26-故障处理",
     "99-杂文",
-    "images/工程能力-稳定性-API网关.png",
-    "images/工程能力-稳定性-强弱依赖.png",
-    "images/工程能力-稳定性-灰度能力.png",
     "25-工程设计",
-    "images/web3-nft-myToken.png",
-    "images/web3-nft-filebase.png",
-    "images/web3-token-nft-openzeppelin-wizard.png",
     "30-Web3/04-Token",
-    "images/web3-crosschain-lockmint.png",
-    "images/web3-crosschain-burnmint.png",
-    "30-Web3/03-SmartContract",
-    "30-Web3/Defi",
-    "images/web-basics.png",
-    "images/01-CS-Basics-BS.png",
-    "00-Web Basic",
-    "21-ProjectManage",
-    "01-Code",
     "未命名.canvas"
   ]
 }

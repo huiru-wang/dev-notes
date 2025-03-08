@@ -1,3 +1,13 @@
+---
+title: RPC通讯方式
+category: WebBasic
+tags:
+  - network
+  - RPC
+publishedAt: 2022-03-01
+description: 什么时候应该使用定制化的RPC通讯，什么时候应该使用更通用的HTTP？
+---
+
 # What is RPC
 1. RPC is a technical idea, not a protocol. It provides a higher level of abstraction, shielding the underlying serialization and network communication details.
 2. RPC frameworks often provide higher performance serialization methods.(JSON/Protobuf/Thrift/Avro...)

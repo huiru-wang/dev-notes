@@ -4,8 +4,8 @@ category: databse
 tags:
   - databse
   - MySQL
-publishedAt: 2022-12-13
-description: 慢SQL真的是SQL慢吗？如何分析和处理分析MySQL的慢SQL发生的原因
+publishedAt: 2023-12-13
+description: 出现慢SQL问题时，真的是SQL慢吗？如何分析和处理分析MySQL的慢SQL发生的原因
 ---
 
 可能原因：

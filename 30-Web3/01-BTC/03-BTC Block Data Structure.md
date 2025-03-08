@@ -3,7 +3,7 @@ title: BTC Block Data Structure
 category: web3
 tags: [btc]
 publishedAt: 2023-11-04
-description: what is BTC Block 
+description: BTC的一个区块的结构是什么样？每一个数据多用处是什么？
 ---
 
 Reference: https://learnmeabitcoin.com/

@@ -4,7 +4,7 @@ category: databse
 tags:
   - databse
   - MySQL
-publishedAt: 2022-12-08
+publishedAt: 2023-01-08
 description: 介绍为什么需要事务，什么是ACID特性以及什么是事务隔离级别
 ---
 

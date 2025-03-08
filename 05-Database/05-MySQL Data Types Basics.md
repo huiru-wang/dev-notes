@@ -1,9 +1,9 @@
 ---
-title: MySQL Data Types Basics
+title: MySQL的数据类型
 category: databse
 tags: [databse, MySQL]
-publishedAt: 2023-02-06
-description: This post summarizes MySQL 8.0 data types, including their storage sizes, ranges, characteristics, and special considerations for integers, floats, strings (CHAR/VARCHAR), text types, and date-time types
+publishedAt: 2022-12-06
+description: MySQL8.0的常用数据类型及使用注意事项
 ---
 
 参考：[MySQL8.0-The CHAR and VARCHAR Types](https://dev.mysql.com/doc/refman/8.0/en/char.html)
