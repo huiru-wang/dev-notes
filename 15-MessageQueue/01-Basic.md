@@ -1,10 +1,10 @@
 ---
-title: 分布式消息队列的特性和带来的问题
+title: 分布式系统中消息队列的工作方式和特性
 category: MessageQueue
 tags:
   - MessageQueue
 publishedAt: 2022-11-12
-description: 分布式消息队列的关键组件、在分布式系统中的关键作用及可能带来的额外问题
+description: 分布式消息队列的关键组件
 ---
 
 https://www.geeksforgeeks.org/message-queues-system-design/
@@ -23,6 +23,34 @@ A message queue is a form of Asynchronous communication and data transfer mechan
 2. 消息队列MessageQueue: the messages stored and managed by a data structure util the consumers consume them. It serves as buffer between producers and consumers.
 3. 消费者Consumer: consume and processed the messages from the message queue.
 4. 消息Message: a message can be defined as a unit of data that is transferred between producers and consumers.
+
+# 消息投递语意
+
+1. At Most Once
+2. At Least Once
+3. Exactly Only Once
+
+在分布式系统中，消息的重复是可以容忍的，甚至某些情况下是需要的（消费者消费过程中宕机，未Commit），但是消息的丟失往往是不能容忍的。因此"At Most Once"基本不能满足要求。
+
+因此只需要讨论下"At Least Once"和"Exactly Only Once"：
+
+（1）实现复杂度考虑：
+- At Least Once：只需要通过重试机制保证消息不丟失；
+	- 生产者发送消息，如果broker未确认、超时，则重试；
+	- Broker持久化消息后，就保证了最少一次；消费失败也可重新投递；
+- Exactly Only Once：需要全链路（生产、传输、消费）严格协调，避免重复：
+	- 生产者消息去重（消息唯一id + 事务日志）
+	- Broker全局去重（需要记录所有消息的状态）
+	- 消费者幂等处理（通过全局唯一标识）
+
+（2）性能考虑：
+- At Least Once：仅依赖本地重试、确认机制，对吞吐量影响很小，能够有更高的并发能力；
+- Exactly Only Once：全局锁、事务日志、协调协议等等都会大幅降低吞吐量；（Kafka开启事务后吞吐量下降20%~30%）
+
+（3）分布式一致性考虑：
+- At Least Once：通过重试机制，可以保证最终一致性，消费的幂等只需要业务消费者自行控制即可；
+- Exactly Only Once：正好一次与最终一致性冲突，分布式系统中往往存在超时的问题，通过重试机制+幂等有更高的可用性；
+
 
 # 消息队列的特性
 
@@ -75,48 +103,6 @@ They can detect failures of producers, consumers. When a consumer fails, the MQ 
 > 大部分MQ服务可以以集群方式启动，消息可以备份在不同的Server节点中
 > 它们可以检测生产者、消费者的故障。当消费者发生故障时，MQ 可以停止向该特定消费者发送消息并将其路由到其他可用的消费者。
 
-# 使用消息队列可能存在的问题
-
-We need to pay attention to some potentail problems when adding MQ middleware to a distributed system:
-## 1. 重复消费问题
-
-排查解决思路：
-
-1. 生产端：判断生产端是否重复发送了，可以基于队列的offset判断：
-	1. 如果相同的消息offset相同，则认为是同一条消息，则生产端正常；
-	2. 如果相同的消息offset不同，则看消息的内容是否都相同，如果相同则是生产端产生了重复消息；
-2. 消费者的Rebalance导致：服务节点的重启、长FGC等等
-	1. 消费者的节点数发生变化（集群发布、节点重启、断连、FGC等）都可能触发Rebalance；
-	2. Rebalance过程中，可能存在少量的重复消费情况；
-3. 消费者处理的问题：
-	1. 消费者在处理完消息后，在commit消息之前，宕机了，就可能触发消息的重复消费；
-
-消息的重复消费问题，不能依赖生产者和消息队列，消息队列要想做到<font color="#f79646">恰好一次</font>的代价很高；
-
-因此消费者必须要做好业务上的消费幂等；
-
-## 2. 消息丟失
-
-要保证消息可靠传输，要从消息链路每个地方保证：
-1. 生产者发送消息到消息队列时丢失；
-2. 消息队列未能持久化消息，宕机丢失；
-3. 消息消费时，未能消费成功，MQ清除消息或者宕机丢失；
-
-三个方面去考虑：
-1. 保证生产端可靠投递（<font color="#de7802">同步投递</font>）
-	- 采用同步方式发送消息，确保收到MQ的成功响应，保证投递成功；
-2. 保证MQ端的消息副本同步、持久化；（<font color="#de7802">TP模式</font>）
-	- MQ在收到消息后，保证消息同步到各个MQ副本上，再响应生产端；副本同步成功已经可以保证消息不丢失了；
-	- 如果要完全保证，还需要持久化消息，但是会拉低性能；
-3. 消费端保证消费完成，从MQ中Commit指定消息（<font color="#de7802">同步Commit</font>）
-	- 当消费端，消费完成，应当响应MQ，去进行对应消息的消费Commit；
-
-
-## 3. 消息堆积
-
-没办法，要消费，就只能提高消费端的消费能力；
-1. 增加消费者线程、进程；
-2. 优化业务消费逻辑；
 
 ## 4. Message out-of Order
 

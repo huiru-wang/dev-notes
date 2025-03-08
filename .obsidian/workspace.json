@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "25-工程和项目/10-项目风险控制.md",
+                "file": "15-MessageQueue/01-Basic.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10-项目风险控制"
+              "title": "01-Basic"
             }
           }
         ]
@@ -150,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "25-工程和项目/10-项目风险控制.md",
+                "file": "15-MessageQueue/01-Basic.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "10-项目风险控制 的大纲"
+              "title": "01-Basic 的大纲"
             }
           }
         ],
@@ -179,8 +179,16 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "d38b2fc884f9dc30",
+  "active": "7f4c8718c9065231",
   "lastOpenFiles": [
+    "15-MessageQueue/04-事务消息.md",
+    "15-MessageQueue/05-RocketMQ.md",
+    "15-MessageQueue/04-RabbitMQ.md",
+    "15-MessageQueue/03-消费限流.md",
+    "15-MessageQueue/02-消息队列常见问题.md",
+    "15-MessageQueue/07-Kafka.md",
+    "15-MessageQueue/01-Basic.md",
+    "25-工程和项目/10-项目风险控制.md",
     "25-工程和项目/05-故障处理.md",
     "25-工程和项目/02-稳定性：灰度能力.md",
     "25-工程和项目/03-稳定性：强弱依赖与SLA.md",
@@ -199,16 +207,8 @@
     "30-Web3/02-Ethereum/12-Hardhat-EtherScan验证合约.md",
     "30-Web3/02-Ethereum/13-Hardhat-创建Task进行合约部署和测试.md",
     "30-Web3/02-Ethereum/50-Ethereum Q&A.md",
-    "Projects/03-Blog网站的构建.md",
     "images/blog-home-page.png",
     "images/black-home.png",
-    "Projects/04-HR-Saas电子签平台.md",
-    "Projects/05-HR-Saas人事档案模块重构.md",
-    "Projects/01-BCP资金一致性服务.md",
-    "02-ProgramLanguage/00-Java/01-Java Basic.md",
-    "README.md",
-    "25-工程和项目/10-项目风险控制.md",
-    "26-故障处理/0-故障处理标准手法.md",
     "images/hr-saas-roster-data-check.png",
     "images/hr-saas-roster-architecture.png",
     "images/hr-saas-esign-usecase-2.png",
