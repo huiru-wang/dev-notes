@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "99-Project/05-HR-Saas人事档案模块重构.md",
+                "file": "Projects/05-HR-Saas人事档案模块重构.md",
                 "mode": "source",
                 "source": true
               },
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "99-Project/05-HR-Saas人事档案模块重构.md",
+                "file": "Projects/05-HR-Saas人事档案模块重构.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -179,10 +179,10 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "7f4c8718c9065231",
+  "active": "d38b2fc884f9dc30",
   "lastOpenFiles": [
-    "99-Project/04-HR-Saas电子签平台.md",
-    "99-Project/01-BCP资金一致性服务.md",
+    "Projects/04-HR-Saas电子签平台.md",
+    "Projects/01-BCP资金一致性服务.md",
     "01-Web Basic/06-RPC.md",
     "01-Web Basic/20-Observability.md",
     "01-Web Basic/21-Metric.md",
@@ -190,7 +190,7 @@
     "01-Web Basic/00-How web application works.md",
     "22-ProjectManage/02-Project Risk Control.md",
     "21-CICD/阿里云部署.md",
-    "99-Project/05-HR-Saas人事档案模块重构.md",
+    "Projects/05-HR-Saas人事档案模块重构.md",
     "30-Web3/01-BTC/05-Fork And Attack.md",
     "30-Web3/01-BTC/04-BTC-Transactions.md",
     "30-Web3/01-BTC/03-BTC Block Data Structure.md",
@@ -222,7 +222,7 @@
     "02-ProgramLanguage/00-Java",
     "00-Trade",
     "21-CICD",
-    "99-Project",
+    "Projects",
     "26-故障处理",
     "99-杂文",
     "25-工程设计",
