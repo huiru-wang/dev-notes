@@ -122,12 +122,12 @@ http {
 
 TARGET_DIR="/root/blog-website"  # 工作目录
 REPO_BLOG_URL="git@github.com:huiru-wang/blog.git"
-REPO_BLOG_NAME="blog"                 
+REPO_BLOG_NAME="blog"
 REPO_DEV_NOTE_URL="git@github.com:huiru-wang/dev-notes.git"
-REPO_DEV_NOTE_NAME="dev-notes"   
+REPO_DEV_NOTE_NAME="dev-notes"
 
 SOURCE_DEV_NOTE_DIR="${TARGET_DIR}/${REPO_DEV_NOTE_NAME}"
-DEV_NOTE_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/dev-notes"  
+DEV_NOTE_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/dev-notes"
 
 SOURCE_PROJECT_DIR="${TARGET_DIR}/${REPO_DEV_NOTE_NAME}/Projects"
 PROJECT_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/blogs"
@@ -143,40 +143,33 @@ cd "$TARGET_DIR" || { echo "无法切换到目录 $TARGET_DIR"; exit 1; }
 
 # 2. 拉取项目代码
 echo "================= Update Blog ================="
-
-if [ -d "$REPO_BLOG_NAME/.git" ]; then
-    echo "更新BLOG仓库代码"
-    (cd "$REPO_BLOG_NAME" && git pull)
-else
-    echo "拉取BLOG仓库代码"
-    rm -rf $REPO_BLOG_NAME/*
-    git clone "$REPO_BLOG_URL" "$REPO_BLOG_NAME"
-fi
+rm -rf "$REPO_BLOG_NAME"
+git clone "$REPO_BLOG_URL"
 
 # 3. 拉取文件
 echo "================= Update Dev Note ================="
+rm -rf "$REPO_DEV_NOTE_NAME"
+git clone "$REPO_DEV_NOTE_URL"
 
-if [ -d "$REPO_DEV_NOTE_NAME/.git" ]; then
-    echo "更新BLOG仓库代码"
-    (cd "$REPO_DEV_NOTE_NAME" && git pull)
-else
-    echo "拉取BLOG仓库代码"
-    rm -rf $REPO_DEV_NOTE_NAME/*
-    git clone "$REPO_DEV_NOTE_URL" "$REPO_DEV_NOTE_NAME"
-fi
-
-# 4. 移动文章到项目中
+# 4. 将文章移动到项目的指定目录
 echo "================= Copy Dev Note ================="
-if [ ! -d "$DEV_NOTE_DIR" ]; then
-    mkdir -p "$DEV_NOTE_DIR"
+if [ -d "$DEV_NOTE_DIR" ]; then
+    rm -rf "$DEV_NOTE_DIR"
 fi
-if [ ! -d "$PROJECT_DIR" ]; then
-    mkdir -p "$PROJECT_DIR"
+if [ -d "$PROJECT_DIR" ]; then
+    rm -rf "$PROJECT_DIR"
 fi
-mv ${SOURCE_PROJECT_DIR}/* ${$PROJECT_DIR}/
-mv ${SOURCE_IMAGES_DIR}/* ${$DEV_IMAGES_DIR}/
-mv ${SOURCE_DEV_NOTE_DIR}/* ${$DEV_NOTE_DIR}/ 
-rm -rf ${$DEV_NOTE_DIR}/.git
+if [ -d "$DEV_IMAGES_DIR" ]; then
+    rm -rf "$DEV_IMAGES_DIR"
+fi
+mkdir -p "$DEV_NOTE_DIR"
+mkdir -p "$PROJECT_DIR"
+mkdir -p "$DEV_IMAGES_DIR"
+mv ${SOURCE_PROJECT_DIR}/* ${PROJECT_DIR}/
+mv ${SOURCE_IMAGES_DIR}/* ${DEV_IMAGES_DIR}/
+mv ${SOURCE_DEV_NOTE_DIR}/* ${DEV_NOTE_DIR}/
+rm -rf "${DEV_NOTE_DIR}/.git"
+rm "${DEV_NOTE_DIR}/README.md"
 
 # 5. 构建启动项目
 echo "================= Build Blog App ================="

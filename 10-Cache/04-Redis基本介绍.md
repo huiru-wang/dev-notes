@@ -1,5 +1,5 @@
 ---
-title: 如何处理DB缓存一致性
+title: Redis基础了解学习
 category: Cache
 tags:
   - cache

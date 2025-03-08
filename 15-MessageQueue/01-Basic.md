@@ -1,8 +1,8 @@
 ---
 title: 分布式消息队列的特性和带来的问题
-category: Cache
+category: MessageQueue
 tags:
-  - cache
+  - MessageQueue
 publishedAt: 2022-11-12
 description: 分布式消息队列的关键组件、在分布式系统中的关键作用及可能带来的额外问题
 ---

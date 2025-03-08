@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "15-MessageQueue/01-Basic.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "03-Blog网站的构建"
+              "title": "01-Basic"
             }
           }
         ]
@@ -150,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "15-MessageQueue/01-Basic.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "03-Blog网站的构建 的大纲"
+              "title": "01-Basic 的大纲"
             }
           }
         ],
@@ -179,13 +179,24 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "d38b2fc884f9dc30",
+  "active": "7f4c8718c9065231",
   "lastOpenFiles": [
+    "15-MessageQueue/02-Kafka.md",
+    "15-MessageQueue/03-RocketMQ.md",
+    "15-MessageQueue/04-RabbitMQ.md",
+    "15-MessageQueue/01-Basic.md",
+    "10-Cache/01-Basic.md",
+    "10-Cache/02-Distributed Cache.md",
+    "10-Cache/03-如何处理DB缓存一致性.md",
+    "10-Cache/04-Redis基本介绍.md",
+    "10-Cache/05-分布式锁.md",
+    "10-Cache/06-Redis Memory Manage.md",
+    "10-Cache/10-Redis Trouble Shooting.md",
+    "Projects/03-Blog网站的构建.md",
     "Projects/04-HR-Saas电子签平台.md",
     "Projects/未命名.md",
     "Projects/05-HR-Saas人事档案模块重构.md",
     "30-Web3/02-Ethereum/13-Hardhat-创建Task进行合约部署和测试.md",
-    "Projects/03-Blog网站的构建.md",
     "Projects/01-BCP资金一致性服务.md",
     "01-WebBasic/06-RPC.md",
     "01-WebBasic/20-Observability.md",
@@ -196,17 +207,6 @@
     "21-CICD/阿里云部署.md",
     "30-Web3/01-BTC/05-Fork And Attack.md",
     "30-Web3/01-BTC/04-BTC-Transactions.md",
-    "30-Web3/01-BTC/03-BTC Block Data Structure.md",
-    "30-Web3/01-BTC/02-BTC-Network.md",
-    "30-Web3/01-BTC/01-BTC-Node.md",
-    "20-SystemDesign/30-秒杀系统设计.md",
-    "20-SystemDesign/05-API Design.md",
-    "20-SystemDesign/08-LoadBalance.md",
-    "20-SystemDesign/01-Single & Distributed.md",
-    "20-SystemDesign/00-SystemDesign Q&A.md",
-    "20-SystemDesign/03-指标计算.md",
-    "20-SystemDesign/02-Distributed System Basics.md",
-    "10-Cache/01-Basic.md",
     "images/hr-saas-roster-data-check.png",
     "images/hr-saas-roster-architecture.png",
     "images/hr-saas-esign-usecase-2.png",

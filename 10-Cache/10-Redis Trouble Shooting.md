@@ -1,5 +1,5 @@
 ---
-title: 如何处理DB缓存一致性
+title: Redis的大key和热key的处理
 category: Cache
 tags:
   - cache
