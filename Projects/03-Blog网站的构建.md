@@ -1,10 +1,10 @@
 
+![](/images/blog-home-page.png)
 
+详见：https://github.com/huiru-wang/blog
 
 
 # Nginx配置
-
-`cd etc/nginx`
 
 ## Nginx配置文件
 
@@ -106,16 +106,11 @@ http {
     }
 ```
 
-## Nginx日志
-
-
-
 # 项目启动脚本
 
 项目主要分为2块：
 - 博客项目代码；
 - 博客文章；
-
 
 ```shell
 #!/bin/bash
