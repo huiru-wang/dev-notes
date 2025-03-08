@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "25-工程和项目/10-项目风险控制.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03-Blog网站的构建"
+              "title": "10-项目风险控制"
             }
           }
         ]
@@ -150,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "25-工程和项目/10-项目风险控制.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "03-Blog网站的构建 的大纲"
+              "title": "10-项目风险控制 的大纲"
             }
           }
         ],
@@ -181,33 +181,34 @@
   },
   "active": "d38b2fc884f9dc30",
   "lastOpenFiles": [
+    "25-工程和项目/05-故障处理.md",
+    "25-工程和项目/02-稳定性：灰度能力.md",
+    "25-工程和项目/03-稳定性：强弱依赖与SLA.md",
+    "25-工程和项目/04-稳定性：业务重构的正确性验证及流量平滑切换.md",
+    "30-Web3/01-Hash Function and Entryption.md",
+    "30-Web3/02-Consensus Mechanisms.md",
+    "30-Web3/03-Wallets钱包应用.md",
+    "30-Web3/04-Coin and Token.md",
+    "30-Web3/10-Oracle预言机.md",
+    "30-Web3/02-Ethereum/01-Ethereum Basic.md",
+    "30-Web3/02-Ethereum/03-Solidity基础.md",
+    "30-Web3/02-Ethereum/04-Solidity高级.md",
+    "30-Web3/02-Ethereum/05-众筹合约实现.md",
+    "30-Web3/02-Ethereum/10-Hardhat-项目创建及本地部署.md",
+    "30-Web3/02-Ethereum/11-Hardhat-部署合约到测试网络.md",
+    "30-Web3/02-Ethereum/12-Hardhat-EtherScan验证合约.md",
+    "30-Web3/02-Ethereum/13-Hardhat-创建Task进行合约部署和测试.md",
+    "30-Web3/02-Ethereum/50-Ethereum Q&A.md",
+    "Projects/03-Blog网站的构建.md",
     "images/blog-home-page.png",
     "images/black-home.png",
     "Projects/04-HR-Saas电子签平台.md",
     "Projects/05-HR-Saas人事档案模块重构.md",
-    "Projects/03-Blog网站的构建.md",
     "Projects/01-BCP资金一致性服务.md",
     "02-ProgramLanguage/00-Java/01-Java Basic.md",
     "README.md",
     "25-工程和项目/10-项目风险控制.md",
-    "25-工程和项目/05-故障处理.md",
     "26-故障处理/0-故障处理标准手法.md",
-    "15-MessageQueue/01-Basic.md",
-    "15-MessageQueue/02-Kafka.md",
-    "15-MessageQueue/03-RocketMQ.md",
-    "15-MessageQueue/04-RabbitMQ.md",
-    "10-Cache/01-Basic.md",
-    "10-Cache/02-Distributed Cache.md",
-    "10-Cache/03-如何处理DB缓存一致性.md",
-    "10-Cache/04-Redis基本介绍.md",
-    "10-Cache/05-分布式锁.md",
-    "10-Cache/06-Redis Memory Manage.md",
-    "10-Cache/10-Redis Trouble Shooting.md",
-    "Projects/未命名.md",
-    "30-Web3/02-Ethereum/13-Hardhat-创建Task进行合约部署和测试.md",
-    "01-WebBasic/06-RPC.md",
-    "01-WebBasic/20-Observability.md",
-    "01-WebBasic/21-Metric.md",
     "images/hr-saas-roster-data-check.png",
     "images/hr-saas-roster-architecture.png",
     "images/hr-saas-esign-usecase-2.png",
@@ -216,7 +217,6 @@
     "images/hr-saas-esign-domain.png",
     "images/jvm-heap.png",
     "images/heap.png",
-    "images/jvm-stack.png",
     "02-ProgramLanguage/01-JVM",
     "02-ProgramLanguage/00-Java/未命名",
     "02-ProgramLanguage/00-Java",
