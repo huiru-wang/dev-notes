@@ -25,7 +25,7 @@ NoSQL: Not Only Structured Query Language
 
 1. NoSQL Database encompassed a variety of data models. 
 	- Redis: Key-value Model ( In-Memory Database)
-	- MongoDB: Document Model
+	- MongoDB: Document Model（文档型，通常使用JSON、BJSON的数据格式）
 	- ClickHouse: Column-Family Model
 	- Graph Model
 2. In order to achieve better performance and scalability, immediate data consistency may be sacrificed to some extent, and data updates may not take effect immediately on all nodes.
