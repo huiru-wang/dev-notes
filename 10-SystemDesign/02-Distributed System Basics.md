@@ -1,6 +1,6 @@
 ---
 title: 分布式系统设计基础
-categorystem: DistSystem
+categorystem: 分布式系统
 tags:
   - cap
   - systemDesign

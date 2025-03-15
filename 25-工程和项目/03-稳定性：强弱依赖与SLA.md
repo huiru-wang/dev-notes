@@ -1,6 +1,6 @@
 ---
 title: 系统稳定性：服务的强弱依赖与SLA
-category: DistSystem
+category: 分布式系统
 tags:
   - systemDesign
   - stability

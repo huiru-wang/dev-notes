@@ -1,6 +1,6 @@
 ---
 title: 单点服务和分布式服务
-category: DistSystem
+category: 分布式系统
 tags:
   - systemDesign
 publishedAt: 2022-03-01

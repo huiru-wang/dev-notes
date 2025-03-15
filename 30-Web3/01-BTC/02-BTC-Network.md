@@ -1,7 +1,8 @@
 ---
 title: BTC 网络
 category: web3
-tags: [btc]
+tags:
+  - blockchain
 publishedAt: 2023-11-02
 description: what does A BTC Network look like? What is Mercle Root and how does it work?
 ---

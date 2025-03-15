@@ -1,7 +1,8 @@
 ---
 title: BTC Block Data Structure
 category: web3
-tags: [btc]
+tags:
+  - blockchain
 publishedAt: 2023-11-04
 description: BTC的一个区块的结构是什么样？每一个数据多用处是什么？
 ---

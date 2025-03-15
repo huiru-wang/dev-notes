@@ -2,8 +2,8 @@
 title: Ethereum和Solidity相关QA
 category: web3
 tags:
-  - ethereum
   - solidity
+  - blockchain
 publishedAt: 2024-06-01
 description: Ethereum和Solidity相关问题及答案
 ---

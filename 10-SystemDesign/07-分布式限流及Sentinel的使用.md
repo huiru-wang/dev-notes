@@ -1,6 +1,6 @@
 ---
 title: 微服务：分布式限流组件Sentinel
-category: DistSystem
+category: 分布式系统
 tags:
   - MicroService
   - Sentinel

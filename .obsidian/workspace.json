@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "7f4c8718c9065231",
+            "id": "ea01bf23556c5a1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10-SystemDesign/07-分布式限流及Sentinel的使用.md",
+                "file": "30-Web3/10-Oracle预言机.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07-分布式限流及Sentinel的使用"
+              "title": "10-Oracle预言机"
             }
           }
         ]
@@ -150,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10-SystemDesign/07-分布式限流及Sentinel的使用.md",
+                "file": "30-Web3/10-Oracle预言机.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "07-分布式限流及Sentinel的使用 的大纲"
+              "title": "10-Oracle预言机 的大纲"
             }
           }
         ],
@@ -179,11 +179,35 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "7f4c8718c9065231",
+  "active": "ea01bf23556c5a1f",
   "lastOpenFiles": [
+    "30-Web3/04-Coin and Token.md",
+    "30-Web3/03-Wallets钱包应用.md",
+    "30-Web3/02-Consensus Mechanisms.md",
+    "30-Web3/01-Hash Function and Entryption.md",
+    "30-Web3/04-Token/03-CrossChain.md",
+    "30-Web3/04-Token/02-Non-Fungible Token.md",
+    "30-Web3/03-SmartContract/08-Non-Fungible Token.md",
+    "30-Web3/03-SmartContract/07-Fungible Token.md",
+    "30-Web3/02-Ethereum/50-Ethereum Q&A.md",
+    "30-Web3/02-Ethereum/13-Hardhat-创建Task进行合约部署和测试.md",
+    "30-Web3/02-Ethereum/12-Hardhat-EtherScan验证合约.md",
+    "30-Web3/02-Ethereum/11-Hardhat-部署合约到测试网络.md",
+    "30-Web3/02-Ethereum/10-Hardhat-项目创建及本地部署.md",
+    "30-Web3/02-Ethereum/05-众筹合约实现.md",
+    "30-Web3/02-Ethereum/03-Solidity基础.md",
+    "30-Web3/02-Ethereum/04-Solidity高级.md",
+    "30-Web3/02-Ethereum/01-Ethereum Basic.md",
+    "30-Web3/01-BTC/05-Fork And Attack.md",
+    "30-Web3/01-BTC/04-BTC-Transactions.md",
+    "30-Web3/01-BTC/03-BTC Block Data Structure.md",
+    "30-Web3/01-BTC/02-BTC-Network.md",
+    "30-Web3/01-BTC/01-BTC-Node.md",
+    "25-工程和项目/03-稳定性：强弱依赖与SLA.md",
+    "25-工程和项目/02-稳定性：灰度能力.md",
+    "10-SystemDesign/50-Short URL.md",
+    "10-SystemDesign/未命名.md",
     "images/system-design-sentinel-mvc-dashboard.png",
-    "10-SystemDesign/05-RPC.md",
-    "10-SystemDesign/07-分布式限流及Sentinel的使用.md",
     "images/system-design-sentinel-spring-mvc.png",
     "images/system-design-sentinel-dubbo-app.png",
     "images/system-design-sentinel-dubbo.png",
@@ -192,32 +216,8 @@
     "images/system-design-sentinel-qps.png",
     "images/systemdesign-sentinel.png",
     "images/Pasted image 20250315171229.png",
-    "10-SystemDesign/08-LoadBalance.md",
-    "10-SystemDesign/04-注册中心.md",
-    "10-SystemDesign/04-指标计算.md",
-    "10-SystemDesign/03-微服务架构.md",
-    "10-SystemDesign/31-签到系统设计.md",
-    "10-SystemDesign/30-秒杀系统设计.md",
-    "10-SystemDesign/02-Distributed System Basics.md",
-    "10-SystemDesign/01-Single & Distributed.md",
-    "10-SystemDesign/00-SystemDesign Q&A.md",
-    "10-SystemDesign/10-CI & CD.md",
-    "10-SystemDesign/20-API 设计原则.md",
-    "10-SystemDesign/未命名.md",
-    "03-Database/01-Basic.md",
-    "40-LLM/03-向量数据库.md",
-    "05-MessageQueue/01-消息队列架构和特性.md",
-    "21-CICD/阿里云部署.md",
     "40-LLM",
-    "05-MessageQueue/02-常见的消费模式.md",
-    "05-MessageQueue/03-消息队列常见问题.md",
-    "05-MessageQueue/04-事务消息.md",
-    "05-MessageQueue/05-RocketMQ.md",
-    "15-MessageQueue/03-消费限流.md",
-    "15-MessageQueue/04-RabbitMQ.md",
-    "05-MessageQueue/07-Kafka.md",
     "images/blog-home-page.png",
-    "images/black-home.png",
     "02-ProgramLanguage/01-JVM",
     "02-ProgramLanguage/00-Java/未命名",
     "02-ProgramLanguage/00-Java",

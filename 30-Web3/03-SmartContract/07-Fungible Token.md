@@ -2,8 +2,8 @@
 title: ERC-20
 category: web3
 tags:
-  - ethereum
   - solidity
+  - blockchain
 publishedAt: 2024-02-04
 description: ERC-20学习，基于OpenZeppelin的ERC-20合约发布一个Token
 ---

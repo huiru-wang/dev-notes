@@ -1,7 +1,8 @@
 ---
 title: BTC Transactions
 category: web3
-tags: [btc]
+tags:
+  - blockchain
 publishedAt: 2023-11-06
 description: BTC的一笔交易的执行流程；
 ---
