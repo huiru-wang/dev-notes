@@ -332,9 +332,13 @@ public class GreetServiceImpl implements GreetService {
 
 # Sentinle的规则管理
 
-原始策略：内存中管理；
-PUSH：
-PULL：
+以上的规则都是存在内存中的。即如果应用重启，这个规则就会失效。可以通过实现`dataSource`接口的方式，来自定义规则的存储数据源。
+
+在微服务架构中，通常选用配置中心来存储规则；
+
+- 原始策略：默认的策略，在内存中管理；每次启动需要配置，基本不可用于生产环境；
+- PUSH：规则中心统一推送，客户端通过注册监听器的方式时刻监听变化；比如使用 [Nacos](https://github.com/alibaba/nacos)、Zookeeper 等配置中心。这种方式有更好的实时性和一致性保证；
+- PULL：客户端主动向某个规则管理中心定期轮询拉取规则；
 
 将sentinel的限流规则，接入Nacos：
 
@@ -403,7 +407,7 @@ public class SentinelDataSource implements InitializingBean {
 - 直接拒绝：该方式是默认的流量控制方式，当QPS超过任意规则的阈值后，新的请求就会被立即拒绝，拒绝方式为抛出`FlowException`；（滑动窗口算法）
 - 匀速限流：超出一定QPS的请求进行排队，逐步处理，并设定超时时间，排队超时的请求会被拒绝。（漏桶算法）
 - 自适应保护：可以根据`load1`、`CPU利用率`等指标触发对系统流量的控制；
-- 热点参数限流：
+- 热点参数限流：选定方法的入参，针对C端、B端场景，通常有一个业务Key，可以作为限流参数；
 
 ## 热点参数限流
 
@@ -418,7 +422,6 @@ public String hotKey(@RequestParam("userId") String userId) {
 	return "hello [" + userId + "]";  
 }
 ```
-
 
 ![](/images/system-design-sentinel-hot-key.png)
 
@@ -493,9 +496,9 @@ public class DegradeExceptionHandler {
 ```
 
 
-
 # 规则的持久化
 
 以上的规则都是存在内存中的。即如果应用重启，这个规则就会失效。可以通过实现`dataSource`接口的方式，来自定义规则的存储数据源。
 
 在微服务架构中，通常选用配置中心来存储规则；
+

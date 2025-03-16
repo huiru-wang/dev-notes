@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10-SystemDesign/07-分布式流量治理策略和组件.md",
+                "file": "10-SystemDesign/08-Sentinel的使用.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07-分布式流量治理策略和组件"
+              "title": "08-Sentinel的使用"
             }
           }
         ]
@@ -150,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10-SystemDesign/07-分布式流量治理策略和组件.md",
+                "file": "10-SystemDesign/08-Sentinel的使用.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "07-分布式流量治理策略和组件 的大纲"
+              "title": "08-Sentinel的使用 的大纲"
             }
           }
         ],
@@ -179,10 +179,10 @@
       "hide-folders:Show hidden folders": false
     }
   },
-  "active": "d38b2fc884f9dc30",
+  "active": "ea01bf23556c5a1f",
   "lastOpenFiles": [
-    "10-SystemDesign/06-RPC通讯协议及框架.md",
     "10-SystemDesign/07-分布式流量治理策略和组件.md",
+    "10-SystemDesign/06-RPC通讯协议及框架.md",
     "10-SystemDesign/08-Sentinel的使用.md",
     "images/system-design-sentinel-nacos-rule.png",
     "images/system-design-sentinel-hot-key.png",
