@@ -8,6 +8,7 @@ publishedAt: 2024-11-01
 description: 分布式限流组件Sentinel的原生接入、MVC接入、Dubbo接入的方式，以及控制台操作；
 ---
 
+代码：https://github.com/huiru-wang/backend-code-snippet/tree/main/07-springboot-sentinel
 # 接入Sentinel
 
 接入方式：
@@ -16,8 +17,6 @@ description: 分布式限流组件Sentinel的原生接入、MVC接入、Dubbo接
 3. 注解配置sentinel资源
 4. 接入`Spring adapter`，让sentinel拦截所有的http资源，统一在`Sentinel控制台`配置限流规则。
 5. dubbo接入sentinel
-
-所有代码：https://github.com/huiru-wang/backend-code-snippet/tree/main/07-springboot-sentinel
 
 通常在日常的工作中，最常见的就是Http、RPC这类的通讯接口的限流。偶尔会需要MQ的分布式限流，MQ本身可以配置消费者的拉取批次和频率，但是如果要做到分布式限流，并且灵活的配置化，还是需要借助Sentinel
 
@@ -343,7 +342,7 @@ public class GreetServiceImpl implements GreetService {
 将sentinel的限流规则，接入Nacos：
 
 （1）在接入Nacos、sentinel后，额外增加依赖：
-- 接入Nacos参考：
+- 接入Nacos参考：https://github.com/huiru-wang/backend-code-snippet/tree/main/06-springboot-nacos
 - 接入Sentinel参考上面的步骤
 ```xml
 <dependency>  
