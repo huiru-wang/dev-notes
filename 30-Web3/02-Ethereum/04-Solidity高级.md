@@ -3,7 +3,7 @@ title: Solidity高级
 category: web3
 tags:
   - solidity
-publishedAt: 2024-01-03
+publishedAt: 2023-02-03
 description: Solidity继承和抽象，转账函数
 ---
 

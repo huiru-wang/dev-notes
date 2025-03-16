@@ -1,4 +1,12 @@
-
+---
+title: Non-Fungible Token
+category: web3
+tags:
+  - solidity
+  - blockchain
+publishedAt: 2023-03-04
+description: Non-Fungible Token协议和去中心化存储
+---
 # NFT
 
 `NFT`是一种基于区块链技术的数字资产，它代表了对特定数字或物理资产的所有权或使用权。与比特币等同质化代币不同，NFT 具有独一无二、不可分割、不可替代的特性，每个 NFT 都有其独特的标识和价值

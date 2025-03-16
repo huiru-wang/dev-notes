@@ -3,7 +3,7 @@ title: Solidity基础
 category: web3
 tags:
   - solidity
-publishedAt: 2024-01-01
+publishedAt: 2023-02-01
 description: Solidity学习基础语法部分
 ---
 

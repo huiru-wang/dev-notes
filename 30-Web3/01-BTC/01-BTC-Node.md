@@ -3,7 +3,7 @@ title: BTC Node
 category: web3
 tags:
   - blockchain
-publishedAt: 2023-11-01
+publishedAt: 2023-01-01
 description: BTC的节点类型以及它们是如何工作的？
 ---
 

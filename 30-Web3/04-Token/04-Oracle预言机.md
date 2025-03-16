@@ -4,7 +4,7 @@ category: web3
 tags:
   - Cross-Chain
   - blockchain
-publishedAt: 2024-02-03
+publishedAt: 2023-04-03
 description: Oracle预言机的作用、喂价合约、DON网络
 ---
 # Oracle

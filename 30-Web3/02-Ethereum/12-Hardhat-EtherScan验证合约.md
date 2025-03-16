@@ -2,7 +2,7 @@
 title: Hardhat-EtherScan验证合约
 category: web3
 tags: [solidity, hardhat]
-publishedAt: 2024-01-26
+publishedAt: 2023-02-26
 description: 使用Hardhat的命令行和脚本在etherScan中验证合约
 ---
 

@@ -1,3 +1,13 @@
+---
+title: 跨链协议
+category: web3
+tags:
+  - solidity
+  - blockchain
+publishedAt: 2023-03-14
+description: 学习什么是跨链、跨链协议、跨链的方式等
+---
+
 # 跨链
 
 Token跨链   -->  可编程Token跨链   -->  任意信息跨链
@@ -25,12 +35,9 @@ Chainlink CCIP is a blockchain interoperability protocol that enables developers
 
 文档：[https://docs.chain.link/ccip](https://docs.chain.link/ccip)
 
-
 - Committing DON
 - RMN（Risk Manage Network   风险管理网络）
 - Executing DON
-
-
 
 # 跨链执行流程
 

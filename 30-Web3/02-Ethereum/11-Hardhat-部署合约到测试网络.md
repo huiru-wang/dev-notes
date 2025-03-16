@@ -2,7 +2,7 @@
 title: Hardhat-部署合约到测试网络
 category: web3
 tags: [solidity, hardhat]
-publishedAt: 2024-01-25
+publishedAt: 2023-02-25
 description: 部署合约到Sepolia测试网络，并加密敏感配置项
 ---
 

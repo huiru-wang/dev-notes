@@ -4,7 +4,7 @@ category: web3
 tags:
   - solidity
   - hardhat
-publishedAt: 2024-01-27
+publishedAt: 2023-02-27
 description: 使用Hardhat测试合约，并创建自定义Task
 ---
 

@@ -1,10 +1,10 @@
 ---
-title: ERC-20
+title: Fungible Token
 category: web3
 tags:
   - solidity
   - blockchain
-publishedAt: 2024-02-04
+publishedAt: 2023-03-04
 description: ERC-20学习，基于OpenZeppelin的ERC-20合约发布一个Token
 ---
 

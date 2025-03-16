@@ -1,14 +1,14 @@
 ---
-title: 微服务：分布式限流组件Sentinel
+title: 微服务：Sentinel的接入和使用
 category: 分布式系统
 tags:
   - MicroService
   - Sentinel
-publishedAt: 2024-03-01
+publishedAt: 2024-11-01
 description: 分布式限流组件Sentinel的原生接入、MVC接入、Dubbo接入的方式，以及控制台操作；
 ---
 
-# Sentinel的接入
+# 接入Sentinel
 
 接入方式：
 1. 接入`原生sentinel`，硬编码资源和限流逻辑。
@@ -22,6 +22,7 @@ description: 分布式限流组件Sentinel的原生接入、MVC接入、Dubbo接
 通常在日常的工作中，最常见的就是Http、RPC这类的通讯接口的限流。偶尔会需要MQ的分布式限流，MQ本身可以配置消费者的拉取批次和频率，但是如果要做到分布式限流，并且灵活的配置化，还是需要借助Sentinel
 
 以下只有接入和最简单的使用，具体的`fallback`、`熔断`等功能在此基础上看官方文档即可
+
 ## 1. 原生Sentinel
 
 （1）在Springboot的基础上引入`sentinel-core`依赖即可
@@ -72,7 +73,7 @@ public class HelloController {
 ```
 
 
-## 2. 原生Sentinel + Sentinel控制台
+## 2. 接入Sentinel控制台
 
 （1）在Springboot的基础上引入`sentinel-core`、`transport`依赖即可
 
@@ -328,3 +329,173 @@ public class GreetServiceImpl implements GreetService {
 ```
 
 ![](/images/system-design-sentinel-dubbo-app.png)
+
+# Sentinle的规则管理
+
+原始策略：内存中管理；
+PUSH：
+PULL：
+
+将sentinel的限流规则，接入Nacos：
+
+（1）在接入Nacos、sentinel后，额外增加依赖：
+- 接入Nacos参考：
+- 接入Sentinel参考上面的步骤
+```xml
+<dependency>  
+	<groupId>com.alibaba.csp</groupId>  
+	<artifactId>sentinel-datasource-nacos</artifactId>  
+</dependency>
+```
+
+（2）增加启动时，配置`ReadableDataSource`，将Nacos作为读取的数据源，并配置`GroupId`，`DataId`；
+```java
+@Component  
+public class SentinelDataSource implements InitializingBean {  
+  
+	@Override  
+	public void afterPropertiesSet() {  
+		Properties properties = new Properties();  
+		properties.put(PropertyKeyConst.SERVER_ADDR, "localhost:8848");  
+		properties.put(PropertyKeyConst.NAMESPACE, "0f89cf05-109f-44a8-aa15-217501d6a5cd");  
+		  
+		String GROUP_ID = "Sentinel_Demo";  
+		String DATA_ID = "com.alibaba.csp.sentinel.demo.flow.rule";  
+		ReadableDataSource<String, List<FlowRule>> flowRuleDataSource = new NacosDataSource<>(properties, GROUP_ID, DATA_ID,  
+			source -> JSON.parseObject(source, new TypeReference<List<FlowRule>>() {  
+		}));  
+		FlowRuleManager.register2Property(flowRuleDataSource.getProperty());  
+	}  
+}
+```
+
+（3）登录Nacos控制台，录入一个规则：
+
+![](/images/system-design-sentinel-nacos-rule.png)
+
+```json
+[
+    {
+        "resource": "nacos-resource",
+        "controlBehavior":0,
+        "count":2,
+        "grade":1,
+        "limitApp":"default",
+        "strategy": 0
+    }
+]
+```
+
+（4）启动项目后，可以直接在Sentinel控制台看到对应的规则；如果需要对规则进行修改，则直接修改对应的nacos配置即可；
+
+
+# Sentinel流量控制策略
+
+一个限流策略的组成：
+- `resource`：资源名，即限流规则的作用对象，通常是接口维度；
+- `count`: 限流阈值；
+- `grade`: 限流阈值类型，按QPS或线程数限流；
+	- QPS限流：站在业务的角度，评估一个合适的服务水平进行限流；
+	- 线程数限流：是站在系统的角度考虑资源的分配；用于保护业务线程数不被耗尽；
+- `strategy`: 根据调用关系选择策略；
+
+限流策略：
+- 直接拒绝：该方式是默认的流量控制方式，当QPS超过任意规则的阈值后，新的请求就会被立即拒绝，拒绝方式为抛出`FlowException`；（滑动窗口算法）
+- 匀速限流：超出一定QPS的请求进行排队，逐步处理，并设定超时时间，排队超时的请求会被拒绝。（漏桶算法）
+- 自适应保护：可以根据`load1`、`CPU利用率`等指标触发对系统流量的控制；
+- 热点参数限流：
+
+## 热点参数限流
+
+与普通的限流不同，当热点参数被限流，抛出：`ParamFlowException`，需要对此异常单独处理；
+- C端流量一般使用用户维度的限流，如userId  
+- B端流量一般使用企业维度，如corpId 
+
+```java
+@GetMapping("/hotKey")  
+@SentinelResource(value = "hotKey-resource")  
+public String hotKey(@RequestParam("userId") String userId) {  
+	return "hello [" + userId + "]";  
+}
+```
+
+
+![](/images/system-design-sentinel-hot-key.png)
+
+
+# Sentinel的降级和熔断
+
+## 降级策略的使用
+
+简单的配置一个Http API，依赖一个服务`DegradeService`，假设现在`DegradeService`处于高RT状态，模拟对此服务的熔断；
+
+```java {22-23}
+@Slf4j  
+@RestController("/")  
+public class HelloController {
+	/**  
+	* 慢调用降级熔断case  
+	* 配置特定的慢调用策略，当慢调用比例达到一定数量，则降级或熔断  
+	*/  
+	@Resource  
+	private DegradeService degradeService;  
+	  
+	@GetMapping("/degrade")  
+	public String degrade(@RequestParam("message") String message) {  
+		degradeService.degrade();  
+		return "hello [" + message + "]";  
+	}
+}
+
+
+@Service  
+public class DegradeService {  
+
+	// 当此资源被熔断，则不会执行，直接抛出DegradeException
+	@SentinelResource("degrade-service")  
+	public String degrade() {  
+		log.info("degrade正常服务");
+		try {  
+			TimeUnit.SECONDS.sleep(2);  
+		} catch (InterruptedException e) {  
+			log.warn("degrade slow RT");  
+		}  
+		return "success";  
+	}  
+}
+
+
+```
+
+配置对应的熔断规则：
+![](/images/system-design-sentinel-熔断.png)
+
+最大RT：当大于此RT，则记录为慢调用；
+统计时长：统计的周期；
+比例阈值：在统计周期内的慢调用所占比例，超出此阈值，则触发熔断；
+熔断时长：暂停对此服务的依赖时长，超出后重新统计慢调用比例；
+
+当初发熔断时，调用对应的资源，会直接抛出：`DegradeException`，通常情况下，会对此异常进行一个兜底的处理：
+
+```java
+@RestControllerAdvice  
+public class DegradeExceptionHandler {  
+  
+	@ResponseStatus(HttpStatus.BAD_REQUEST)  
+	@ExceptionHandler(DegradeException.class)  
+	public JSONObject handleBusinessException(DegradeException e) {  
+		JSONObject jsonObject = new JSONObject();  
+		jsonObject.put("code", "400");  
+		jsonObject.put("message", "degraded");  
+		return jsonObject;  
+	}  
+}
+```
+
+
+
+# 规则的持久化
+
+以上的规则都是存在内存中的。即如果应用重启，这个规则就会失效。可以通过实现`dataSource`接口的方式，来自定义规则的存储数据源。
+
+在微服务架构中，通常选用配置中心来存储规则；

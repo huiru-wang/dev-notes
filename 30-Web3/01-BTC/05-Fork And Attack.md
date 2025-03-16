@@ -3,7 +3,7 @@ title: BTC链中的Fork和Attack
 category: web3
 tags:
   - blockchain
-publishedAt: 2023-11-13
+publishedAt: 2023-01-13
 description: BTC链中的硬分叉和软分叉、双花攻击
 ---
 # Fork
