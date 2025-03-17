@@ -329,67 +329,6 @@ public class GreetServiceImpl implements GreetService {
 
 ![](/images/system-design-sentinel-dubbo-app.png)
 
-# Sentinle的规则管理
-
-以上的规则都是存在内存中的。即如果应用重启，这个规则就会失效。可以通过实现`dataSource`接口的方式，来自定义规则的存储数据源。
-
-在微服务架构中，通常选用配置中心来存储规则；
-
-- 原始策略：默认的策略，在内存中管理；每次启动需要配置，基本不可用于生产环境；
-- PUSH：规则中心统一推送，客户端通过注册监听器的方式时刻监听变化；比如使用 [Nacos](https://github.com/alibaba/nacos)、Zookeeper 等配置中心。这种方式有更好的实时性和一致性保证；
-- PULL：客户端主动向某个规则管理中心定期轮询拉取规则；
-
-将sentinel的限流规则，接入Nacos：
-
-（1）在接入Nacos、sentinel后，额外增加依赖：
-- 接入Nacos参考：https://github.com/huiru-wang/backend-code-snippet/tree/main/06-springboot-nacos
-- 接入Sentinel参考上面的步骤
-```xml
-<dependency>  
-	<groupId>com.alibaba.csp</groupId>  
-	<artifactId>sentinel-datasource-nacos</artifactId>  
-</dependency>
-```
-
-（2）增加启动时，配置`ReadableDataSource`，将Nacos作为读取的数据源，并配置`GroupId`，`DataId`；
-```java
-@Component  
-public class SentinelDataSource implements InitializingBean {  
-  
-	@Override  
-	public void afterPropertiesSet() {  
-		Properties properties = new Properties();  
-		properties.put(PropertyKeyConst.SERVER_ADDR, "localhost:8848");  
-		properties.put(PropertyKeyConst.NAMESPACE, "0f89cf05-109f-44a8-aa15-217501d6a5cd");  
-		  
-		String GROUP_ID = "Sentinel_Demo";  
-		String DATA_ID = "com.alibaba.csp.sentinel.demo.flow.rule";  
-		ReadableDataSource<String, List<FlowRule>> flowRuleDataSource = new NacosDataSource<>(properties, GROUP_ID, DATA_ID,  
-			source -> JSON.parseObject(source, new TypeReference<List<FlowRule>>() {  
-		}));  
-		FlowRuleManager.register2Property(flowRuleDataSource.getProperty());  
-	}  
-}
-```
-
-（3）登录Nacos控制台，录入一个规则：
-
-![](/images/system-design-sentinel-nacos-rule.png)
-
-```json
-[
-    {
-        "resource": "nacos-resource",
-        "controlBehavior":0,
-        "count":2,
-        "grade":1,
-        "limitApp":"default",
-        "strategy": 0
-    }
-]
-```
-
-（4）启动项目后，可以直接在Sentinel控制台看到对应的规则；如果需要对规则进行修改，则直接修改对应的nacos配置即可；
 
 
 # Sentinel流量控制策略
@@ -494,10 +433,65 @@ public class DegradeExceptionHandler {
 }
 ```
 
-
-# 规则的持久化
+# Sentinle的规则管理
 
 以上的规则都是存在内存中的。即如果应用重启，这个规则就会失效。可以通过实现`dataSource`接口的方式，来自定义规则的存储数据源。
 
 在微服务架构中，通常选用配置中心来存储规则；
+
+- 原始策略：默认的策略，在内存中管理；每次启动需要配置，基本不可用于生产环境；
+- PUSH：规则中心统一推送，客户端通过注册监听器的方式时刻监听变化；比如使用 [Nacos](https://github.com/alibaba/nacos)、Zookeeper 等配置中心。这种方式有更好的实时性和一致性保证；
+- PULL：客户端主动向某个规则管理中心定期轮询拉取规则；
+
+将sentinel的限流规则，接入Nacos：
+
+（1）在接入Nacos、sentinel后，额外增加依赖：
+- 接入Nacos参考：https://github.com/huiru-wang/backend-code-snippet/tree/main/06-springboot-nacos
+- 接入Sentinel参考上面的步骤
+```xml
+<dependency>  
+	<groupId>com.alibaba.csp</groupId>  
+	<artifactId>sentinel-datasource-nacos</artifactId>  
+</dependency>
+```
+
+（2）增加启动时，配置`ReadableDataSource`，将Nacos作为读取的数据源，并配置`GroupId`，`DataId`；
+```java
+@Component  
+public class SentinelDataSource implements InitializingBean {  
+  
+	@Override  
+	public void afterPropertiesSet() {  
+		Properties properties = new Properties();  
+		properties.put(PropertyKeyConst.SERVER_ADDR, "localhost:8848");  
+		properties.put(PropertyKeyConst.NAMESPACE, "0f89cf05-109f-44a8-aa15-217501d6a5cd");  
+		  
+		String GROUP_ID = "Sentinel_Demo";  
+		String DATA_ID = "com.alibaba.csp.sentinel.demo.flow.rule";  
+		ReadableDataSource<String, List<FlowRule>> flowRuleDataSource = new NacosDataSource<>(properties, GROUP_ID, DATA_ID,  
+			source -> JSON.parseObject(source, new TypeReference<List<FlowRule>>() {  
+		}));  
+		FlowRuleManager.register2Property(flowRuleDataSource.getProperty());  
+	}  
+}
+```
+
+（3）登录Nacos控制台，录入一个规则：
+
+![](/images/system-design-sentinel-nacos-rule.png)
+
+```json
+[
+    {
+        "resource": "nacos-resource",
+        "controlBehavior":0,
+        "count":2,
+        "grade":1,
+        "limitApp":"default",
+        "strategy": 0
+    }
+]
+```
+
+（4）启动项目后，可以直接在Sentinel控制台看到对应的规则；如果需要对规则进行修改，则直接修改对应的nacos配置即可；
 
