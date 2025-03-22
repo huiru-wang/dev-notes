@@ -9,7 +9,7 @@ description: 后端程序员初学前端，使用Next.js TailwindCSS RemoteMDX�
 
 详见：https://github.com/huiru-wang/blog
 
-# Next.js TailwindCSS RemoteMDX 博客平台
+# Next.js TailwindCSS RemoteMDX 博客
 
 一个后端程序员尝试学习前端，制作的基于 `Next.js`、 `TailwindCSS`、`next-remote-mdx` 的微像素风博客，博客文章是读取本地的md文件。
 
@@ -271,6 +271,68 @@ fi
 ```
 
 
-# 博客内容热更新脚本
+# 博客内容更新
 
-TODO
+```shell
+#!/bin/bash
+
+TARGET_DIR="/root/blog-website"  # 工作目录
+REPO_BLOG_NAME="blog"
+REPO_DEV_NOTE_URL="git@github.com:huiru-wang/dev-notes.git"
+REPO_DEV_NOTE_NAME="dev-notes"
+
+SOURCE_DEV_NOTE_DIR="${TARGET_DIR}/${REPO_DEV_NOTE_NAME}"
+DEV_NOTE_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/dev-notes"
+
+SOURCE_PROJECT_DIR="${TARGET_DIR}/${REPO_DEV_NOTE_NAME}/Projects"
+PROJECT_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/blogs"
+
+SOURCE_IMAGES_DIR="${TARGET_DIR}/${REPO_DEV_NOTE_NAME}/images"
+DEV_IMAGES_DIR="${TARGET_DIR}/${REPO_BLOG_NAME}/public/images"  # 图片目录
+
+# 1. 切换到工作目录
+if [ ! -d "$TARGET_DIR" ]; then
+    mkdir -p "$TARGET_DIR"
+fi
+cd "$TARGET_DIR" || { echo "无法切换到目录 $TARGET_DIR"; exit 1; }
+
+# 2. 拉取文件
+echo "================= Update Dev Note ================="
+rm -rf "$REPO_DEV_NOTE_NAME"
+git clone "$REPO_DEV_NOTE_URL"
+
+# 3. 将文章移动到项目的指定目录
+echo "================= Copy Dev Note ================="
+if [ -d "$DEV_NOTE_DIR" ]; then
+    rm -rf "$DEV_NOTE_DIR"
+fi
+if [ -d "$PROJECT_DIR" ]; then
+    rm -rf "$PROJECT_DIR"
+fi
+if [ -d "$DEV_IMAGES_DIR" ]; then
+    rm -rf "$DEV_IMAGES_DIR"
+fi
+mkdir -p "$DEV_NOTE_DIR"
+mkdir -p "$PROJECT_DIR"
+mkdir -p "$DEV_IMAGES_DIR"
+mv ${SOURCE_PROJECT_DIR}/* ${PROJECT_DIR}/
+mv ${SOURCE_IMAGES_DIR}/* ${DEV_IMAGES_DIR}/
+mv ${SOURCE_DEV_NOTE_DIR}/* ${DEV_NOTE_DIR}/
+rm -rf "${DEV_NOTE_DIR}/.git"
+rm "${DEV_NOTE_DIR}/README.md"
+
+# 4. 重启 pm2 中的应用程序
+echo "================= Restart Blog App ================="
+cd "${TARGET_DIR}/${REPO_BLOG_NAME}"
+
+if pm2 list | grep -q "blog"; then
+    # 应用程序已经在 pm2 中，重启它
+    echo "===================== Restarting application ====================="
+    pm2 restart blog || { echo "Failed to restart pm2 application. Exiting."; exit 1; }
+else
+    # 应用程序不在 pm2 中，启动它
+    echo "===================== Starting application ====================="
+    pm2 start pnpm --name 'blog' -- start || { echo "Failed to start pm2 application. Exiting."; exit 1; }
+fi
+```
+
