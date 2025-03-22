@@ -1,5 +1,5 @@
 ---
-title: Redis基础了解学习
+title: 缓存：Redis基本学习
 category: Cache
 tags:
   - cache

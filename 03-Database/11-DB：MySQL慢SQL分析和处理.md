@@ -1,5 +1,5 @@
 ---
-title: MySQL慢SQL如何分析和处理
+title: DB：MySQL慢SQL分析和处理
 category: databse
 tags:
   - databse

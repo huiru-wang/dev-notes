@@ -1,5 +1,5 @@
 ---
-title: MySQL的架构关键组件及执行过程
+title: DB：MySQL的架构关键组件及执行过程
 category: databse
 tags:
   - databse

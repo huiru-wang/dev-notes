@@ -1,3 +1,12 @@
+---
+title: 工程设计：API设计
+category: 分布式系统
+tags:
+  - systemDesign
+  - 稳定性
+publishedAt: 2024-03-03
+description: API设计原则和关注点
+---
 
 ## RestAPI
 

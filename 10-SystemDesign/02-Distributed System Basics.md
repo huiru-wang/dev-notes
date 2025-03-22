@@ -1,11 +1,11 @@
 ---
-title: 分布式系统设计基础
+title: 分布式系统设计基础和关键点
 categorystem: 分布式系统
 tags:
   - cap
   - systemDesign
 publishedAt: 2023-03-12
-description: 介绍CAP理论和分布式系统关键系统衡量指标
+description: CAP理论和分布式系统关键系统衡量指标
 ---
 
 # 单点服务和分布式服务

@@ -1,7 +1,9 @@
 ---
-title: MySQL的数据类型
+title: DB：MySQL的数据类型
 category: databse
-tags: [databse, MySQL]
+tags:
+  - databse
+  - MySQL
 publishedAt: 2022-12-06
 description: MySQL8.0的常用数据类型及使用注意事项
 ---

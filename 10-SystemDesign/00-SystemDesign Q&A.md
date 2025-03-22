@@ -1,3 +1,12 @@
+---
+title: SystemDesign Q&A
+categorystem: 分布式系统
+tags:
+  - cap
+  - systemDesign
+publishedAt: 2022-03-12
+description: 如何从头开始考虑一个系统设计，系统设计的关键步骤
+---
 
 Reference: [https://github.com/donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)
 
@@ -30,7 +39,6 @@ Outline a high level design with all important components
 
 Dive into details for each core component.
 > 开始对每一个核心组件进行详细的设计。比如：每个组件该如何使用，组件间是如何交互的，数据库表如何设计等等
-
 
 ## Step4. Scale the design
 

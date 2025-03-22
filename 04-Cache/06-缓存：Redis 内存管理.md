@@ -1,5 +1,5 @@
 ---
-title: Redis的内存管理
+title: 缓存：Redis 内存管理
 category: Cache
 tags:
   - cache
