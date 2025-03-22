@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "Projects/04-HR-Saas电子签平台.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "03-Blog网站的构建"
+              "title": "04-HR-Saas电子签平台"
             }
           },
           {
@@ -179,13 +179,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Projects/03-Blog网站的构建.md",
+                "file": "Projects/04-HR-Saas电子签平台.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "03-Blog网站的构建 的大纲"
+              "title": "04-HR-Saas电子签平台 的大纲"
             }
           }
         ],
@@ -210,8 +210,10 @@
   },
   "active": "ebd7ca4813d788d7",
   "lastOpenFiles": [
-    "Projects/04-HR-Saas电子签平台.md",
+    "02-ProgramBasic/设计原则.md",
+    "02-ProgramBasic/内存泄露和溢出.md",
     "Projects/03-Blog网站的构建.md",
+    "Projects/04-HR-Saas电子签平台.md",
     "images/white-blogs.png",
     "images/mobile-projects.jpg",
     "images/mobile-home.jpg",
@@ -244,8 +246,6 @@
     "10-SystemDesign/20-API 设计原则.md",
     "10-SystemDesign/50-系统设计：短链系统设计.md",
     "10-SystemDesign/31-系统设计：签到系统设计.md",
-    "10-SystemDesign/30-系统设计：秒杀系统设计.md",
-    "03-Database/11-DB：MySQL慢SQL分析和处理.md",
     "images/工程能力-稳定性-机器灰度.png",
     "02-ProgramBasic/02-Go",
     "30-Web3/未命名",

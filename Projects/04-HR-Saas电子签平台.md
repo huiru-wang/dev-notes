@@ -168,21 +168,21 @@ public interface HrmEsignTenantSpi {
     TenantArchives fetchTenantFields(TenantFieldRequest request);
 
 	// 获取用于发起的租户用户数据
-	TenantUserData fetchTenantUserData(TenantUserDataRequest request);
+    TenantUserData fetchTenantUserData(TenantUserDataRequest request);
 }
 
 // HTTP方式接入的租户
 public interface HrmEsignTenantSpiHTTPAdaptor {
 
-	// 租户配置
-	private TenantConfig tenantConfig;
+    // 租户配置
+    private TenantConfig tenantConfig;
 
-	// 获取用于模板制作的租户档案字段
+    // 获取用于模板制作的租户档案字段
     public TenantArchives fetchTenantFields(TenantFieldRequest request) {
 
-		// 获取租户配置
-    	String tenantId = request.getTenantId();
-		TenantConfig tenantConfig = tenantConfig.getConfig(tenantId)
+        // 获取租户配置
+        String tenantId = request.getTenantId();
+        TenantConfig tenantConfig = tenantConfig.getConfig(tenantId)
 
 		// HTTP 调用
     }
@@ -192,22 +192,19 @@ public interface HrmEsignTenantSpiHTTPAdaptor {
 public interface HrmEsignTenantSpiRPCAdaptor {
 
 	// 租户配置
-	private TenantConfig tenantConfig;
+    private TenantConfig tenantConfig;
 	
-	// 获取用于模板制作的租户档案字段
+    // 获取用于模板制作的租户档案字段
     public TenantArchives fetchTenantFields(TenantFieldRequest request) {
-		// 获取租户配置
-    	String tenantId = request.getTenantId();
-		TenantConfig tenantConfig = tenantConfig.getConfig(tenantId)
+        // 获取租户配置
+        String tenantId = request.getTenantId();
+        TenantConfig tenantConfig = tenantConfig.getConfig(tenantId)
 
-		// RPC 泛化调用：根据动态配置的group、service、method
+        // RPC 泛化调用：根据动态配置的group、service、method
     
     }
-
 }
 ```
-
-
 
 
 
