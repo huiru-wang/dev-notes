@@ -41,13 +41,6 @@ description: 后端程序员初学前端，使用Next.js TailwindCSS RemoteMDX�
 
 ![markdownwhite](/images/black-markdown.png)
 
-<div style="display: flex;">
-<img src="/images/mobile-home.jpg" width="30%" height="30%" center/>
-<img src="/images/mobile-blogs.jpg" width="30%" height="30%" center/>
-<img src="/images/mobile-projects.jpg" width="30%" height="30%" center/>
-</div>
-
-
 ## 安装与配置
 
 
